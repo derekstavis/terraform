@@ -115,6 +115,11 @@ func (c *RefreshCommand) Run(args []string) int {
 		return 1
 	}
 
+	// Validate again, with the context available
+	if !validateContext(ctx, c.Ui) {
+		return 1
+	}
+
 	log.Printf("[INFO] Writing state output to: %s", c.Meta.StateOutPath())
 	if err := c.Meta.PersistState(newState); err != nil {
 		c.Ui.Error(fmt.Sprintf("Error writing state file: %s", err))

@@ -116,6 +116,10 @@ func (c *PlanCommand) Run(args []string) int {
 		c.Ui.Output("")
 	}
 
+	if !validateContext(ctx, c.Ui) {
+		return 1
+	}
+
 	plan, err := ctx.Plan()
 	if err != nil {
 		c.Ui.Error(fmt.Sprintf("Error running plan: %s", err))

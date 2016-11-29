@@ -195,6 +195,10 @@ func (c *ApplyCommand) Run(args []string) int {
 			shadowErr = multierror.Append(shadowErr, multierror.Prefix(
 				err, "plan operation:"))
 		}
+
+		if !validateContext(ctx, c.Ui) {
+			return 1
+		}
 	}
 
 	// Setup the state hook for continuous state updates
