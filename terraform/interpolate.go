@@ -722,8 +722,9 @@ func (i *Interpolater) resourceCountMax(
 	// we do a full interpolation.
 	if i.Operation != walkApply {
 		count, err := cr.Count()
+
 		if err != nil {
-			return 0, err
+			return 1, nil
 		}
 
 		return count, nil

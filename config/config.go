@@ -513,20 +513,11 @@ func (c *Config) Validate() error {
 					n,
 					v.FullKey()))
 			case *ModuleVariable:
-				errs = append(errs, fmt.Errorf(
-					"%s: resource count can't reference module variable: %s",
-					n,
-					v.FullKey()))
+				// Good
 			case *ResourceVariable:
-				errs = append(errs, fmt.Errorf(
-					"%s: resource count can't reference resource variable: %s",
-					n,
-					v.FullKey()))
+				// Good
 			case *SimpleVariable:
-				errs = append(errs, fmt.Errorf(
-					"%s: resource count can't reference variable: %s",
-					n,
-					v.FullKey()))
+				// Good
 			case *UserVariable:
 				// Good
 			default:
